@@ -1,0 +1,5 @@
+include README.rst
+include randomness/diceware.txt
+include randomness/eff5.txt
+include randomness/eff4.txt
+include randomness/effshort.txt
