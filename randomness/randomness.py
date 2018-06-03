@@ -45,6 +45,9 @@ def main():
     """The main function."""
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
+        '--cap-first', action='store_true',
+        help='capitalize the first letter of each item')
+    parser.add_argument(
         '--length', type=int, default=8,
         help='the number of random items to generate')
     parser.add_argument(
@@ -63,6 +66,8 @@ def main():
 
     for _ in range(args.num):
         items = RANDOM.choices(SETS[args.set], k=args.length)
+        if args.cap_first:
+            items = map(str.title, items)
         output = args.sep.join(items)
         print(output)
 
