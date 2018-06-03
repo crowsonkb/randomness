@@ -12,6 +12,13 @@ import pkg_resources
 RANDOM = SystemRandom()
 
 
+def sgr(*args):
+    """Creates a Select Graphic Rendition escape sequence. See
+    https://en.wikipedia.org/wiki/ANSI_escape_code#SGR_(Select_Graphic_Rendition)_parameters.
+    """
+    return '\x1b[{}m'.format(';'.join(str(i) for i in args))
+
+
 def get_resource(name):
     """Convenience method for retrieving a package resource."""
     return pkg_resources.resource_stream(__name__, name)
@@ -52,7 +59,7 @@ def main():
     args = parser.parse_args()
 
     bits = math.log2(len(SETS[args.set])) * args.length
-    print(f'Random bits per sequence: {bits:.01f}')
+    print(f'{sgr(1)}Random bits per sequence{sgr(0)}: {bits:.01f}')
 
     for _ in range(args.num):
         items = RANDOM.choices(SETS[args.set], k=args.length)
