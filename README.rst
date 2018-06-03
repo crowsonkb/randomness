@@ -18,8 +18,8 @@ Usage
   # Generates eight-character alphanumeric passwords
   randomness
 
-  # Generates five-word passphrases based on the EFF's short word list
-  randomness --set eff4 --length 5 --sep ' '
+  # Generates six-word passphrases based on the EFF's short word list
+  randomness --set eff4 --length 6 --sep ' '
 
 References
 ----------
